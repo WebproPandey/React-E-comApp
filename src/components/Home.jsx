@@ -11,6 +11,7 @@ const Home = () => {
   let {search} = useLocation()
   let category = decodeURI(search.split("=")[1])
   const [filterProduct, setfilterProduct] = useState("")
+  
   const getproducta = async ()=>{
       try {
          const  {data} =  await axios.get(`products/category/${category}`)
