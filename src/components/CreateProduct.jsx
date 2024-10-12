@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { ProductContext } from "../utils/Context";
 
 import  {nanoid}   from "nanoid"
+import { useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
-
+  
+ let navigate =  useNavigate()
  const [products, setproducts] = useContext(ProductContext)
   const [title, settitle] = useState("")
   const [image, setimage] = useState("")
@@ -37,10 +39,9 @@ const CreateProduct = () => {
       price,
       description
      }
-     setproducts([...products , product])
-     console.log(product);
-     
-   
+     setproducts([...products , product])  
+     localStorage.setItem("products" , JSON.stringify([...products , product]))
+     navigate("/") 
   }
   return (
     <div className="h-screen  w-full bg-blue-200 flex flex-col  gap-4 justify-center items-center ">
