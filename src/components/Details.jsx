@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { json, Link, useNavigate, useParams } from 'react-router-dom'
 import Loading from './Loading';
 import { ProductContext } from '../utils/Context';
 
+
 const Details = () => {
+  let navigate =    useNavigate()
   const [products, setproducts] = useContext(ProductContext)
 
     const [Product, setProduct] = useState(null)
@@ -28,6 +30,14 @@ const Details = () => {
     // getsingleProduct()
   },[])
 
+  const  ProductDleteHandler = (id) =>{
+   const filterDeleteProduct =  products.filter(p => p.id !== id)
+   setproducts(filterDeleteProduct)
+   localStorage.setItem("products" , JSON.stringify(filterDeleteProduct))
+   navigate("/")
+
+  }
+
  
   
   return  Product ? (
@@ -46,7 +56,9 @@ const Details = () => {
           <p className='text-[2.4vh] font-sans'>{Product.description}</p>
            <div className='w-fit flex  gap-3 '>
            <Link className='bg-green-400 px-4 py-2 rounded-lg'>Edit</Link>
-           <Link className='bg-red-500 px-4 py-2 rounded-lg' >Delete</Link>
+
+           <button  onClick={() => ProductDleteHandler(Product.id)} className='bg-red-500 px-4 py-2 rounded-lg' >Delete</button>
+           
            </div>
         </div>
     </div>

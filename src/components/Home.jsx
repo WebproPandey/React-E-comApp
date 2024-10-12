@@ -25,7 +25,9 @@ const Home = () => {
 
   useEffect(()=>{
     if(!filterProduct || category =="undefined" ) setfilterProduct(Product)
-    if(category != "undefined") getproducta()
+    if(category != "undefined"){
+      setfilterProduct(Product.filter((p) => p.category ==  category))
+    }
   },[category, Product ])
 
 
