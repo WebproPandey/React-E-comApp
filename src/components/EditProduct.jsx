@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { ProductContext } from "../utils/Context"
 import { useNavigate, useParams } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const EditProduct = () => {
 
@@ -44,14 +45,19 @@ const EditProduct = () => {
      }
    
       const productIndex  =  products.findIndex((p) => p.id == id);
+
       const copyData =  [...products]  
       copyData[productIndex] = {...products[productIndex] ,...product}  
-      setproduct(copyData)
+      console.log(product , productIndex);
+      
+      setproducts(copyData)
       localStorage.setItem("products" , JSON.stringify(copyData))
+      toast.success("Product Edit  SuccessFully")
       navigate(-1) 
 
        
      }
+     
 
 
   return (

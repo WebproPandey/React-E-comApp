@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { json, Link, useNavigate, useParams } from 'react-router-dom'
 import Loading from './Loading';
 import { ProductContext } from '../utils/Context';
+import { toast } from 'react-toastify';
 
 
 const Details = () => {
@@ -34,6 +35,7 @@ const Details = () => {
    const filterDeleteProduct =  products.filter(p => p.id !== id)
    setproducts(filterDeleteProduct)
    localStorage.setItem("products" , JSON.stringify(filterDeleteProduct))
+   toast.success("Product Delete SuccessFully")
    navigate("/")
 
   }
