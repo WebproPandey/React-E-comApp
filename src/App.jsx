@@ -3,6 +3,7 @@ import { Link, Route,  Routes, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import Details from "./components/Details";
 import CreateProduct from "./components/CreateProduct";
+import EditProduct from "./components/EditProduct";
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
          <Route path="" element={<Home/>}   />
          <Route path="/product" element={<CreateProduct/>}/>
          <Route path="/details/:id" element={<Details/>}   />
+         <Route path="/edit/:id" element={<EditProduct/>}   />
       </Routes>
       
     </div>

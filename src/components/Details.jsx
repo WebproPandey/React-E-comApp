@@ -55,7 +55,7 @@ const Details = () => {
           <h2 className='text-lg font-medium  text-red-300 ' >{Product.price} $</h2>
           <p className='text-[2.4vh] font-sans'>{Product.description}</p>
            <div className='w-fit flex  gap-3 '>
-           <Link className='bg-green-400 px-4 py-2 rounded-lg'>Edit</Link>
+           <Link to={`/edit/${Product.id}`} className='bg-green-400 px-4 py-2 rounded-lg'>Edit</Link>
 
            <button  onClick={() => ProductDleteHandler(Product.id)} className='bg-red-500 px-4 py-2 rounded-lg' >Delete</button>
            
